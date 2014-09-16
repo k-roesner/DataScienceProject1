@@ -46,7 +46,6 @@ ggplot(data = seismic_data, aes(x = MAGNITUDE)) + geom_histogram() + ggtitle("Di
 
 ggplot(data = seismic_data, aes(x = MAGNITUDE)) + geom_density(fill = "blue") + ggtitle("Distribution of Earthquake Magnitudes")
 
-
 # Volcano data scatter plot, VEI (Volcano Explosivity Index) vs. number of deaths
 
 ggplot(data = volcano_data, aes(x = VEI, y = NUM_DEATHS)) + geom_point() + ylab("Number of Deaths") + xlab("Volcano Explosivity Index") + ggtitle("VEI vs. Number of Deaths")
@@ -57,7 +56,7 @@ ggplot(data = volcano_data, aes(x = VEI)) + geom_histogram(binwidth = 1) + xlab(
 
 # Histogram of countries where at least 100 tsunamis have hit
 
-ggplot(data = tsunami_subset, aes(x = COUNTRY, y = COUNT, fill = COUNTRY)) + geom_histogram(stat = "identity") + coord_flip() + xlab("Number of Tsunamis") + ggtitle("Nations With More Than 100 Tsunamis")
+ggplot(data = tsunami_subset, aes(x = COUNTRY, y = COUNT, fill = COUNTRY)) + geom_histogram(stat = "identity") + coord_flip() + ylab("Number of Tsunamis") + ggtitle("Nations With More Than 100 Tsunamis")
 
 # Facet-wrapped scatter plots of tsunami deaths by year
 
