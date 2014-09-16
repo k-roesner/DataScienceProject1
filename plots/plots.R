@@ -68,3 +68,7 @@ tsunami_months <- data.frame(tsunami_runup_data$MONTH)
 tsunami_months[sapply(tsunami_months, is.numeric)] <- lapply(tsunami_months[sapply(tsunami_months, is.numeric)], as.factor)
 colnames(tsunami_months) <- "MONTH"
 ggplot(data = tsunami_months, aes(x = MONTH, fill = MONTH)) + geom_histogram()
+
+# Fact grid scatter plot of tsunami deaths by month
+ggplot(data = tsunami_subset_deaths, aes(x = DAY, y = DEATHS)) + geom_point() + facet_grid(~ MONTH)
+
