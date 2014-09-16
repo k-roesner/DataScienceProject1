@@ -42,6 +42,11 @@ ggplot(data = earthquake_losses_no_japan, aes(x = REGION, y = AVERAGE_ANNUAL_LOS
 
 ggplot(data = seismic_data, aes(x = MAGNITUDE)) + geom_histogram() + ggtitle("Distribution of Earthquake Magnitudes")
 
+# Density graph of earthquake magnitudes
+
+ggplot(data = seismic_data, aes(x = MAGNITUDE)) + geom_density(fill = "blue") + ggtitle("Distribution of Earthquake Magnitudes")
+
+
 # Volcano data scatter plot, VEI (Volcano Explosivity Index) vs. number of deaths
 
 ggplot(data = volcano_data, aes(x = VEI, y = NUM_DEATHS)) + geom_point() + ylab("Number of Deaths") + xlab("Volcano Explosivity Index") + ggtitle("VEI vs. Number of Deaths")
@@ -57,3 +62,10 @@ ggplot(data = tsunami_subset, aes(x = COUNTRY, y = COUNT, fill = COUNTRY)) + geo
 # Facet-wrapped scatter plots of tsunami deaths by year
 
 ggplot(data = tsunami_subset_deaths, aes(x = YEAR, y = DEATHS_DESCR)) + geom_point() + facet_wrap(~COUNTRY) + ylab("Level of Deaths") + ggtitle("Tsunami Deaths by Country")
+
+# Histograms of tsunamis by month
+# first extract the months column and convert it to a factor column so that graphing the months is easier/nicer
+tsunami_months <- data.frame(tsunami_runup_data$MONTH)
+tsunami_months[sapply(tsunami_months, is.numeric)] <- lapply(tsunami_months[sapply(tsunami_months, is.numeric)], as.factor)
+colnames(tsunami_months) <- "MONTH"
+ggplot(data = tsunami_months, aes(x = MONTH, fill = MONTH)) + geom_histogram()
