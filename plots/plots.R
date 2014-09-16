@@ -20,6 +20,7 @@ if(!inherits(possibleError, "error")){
   
   #Get some specific subsets of the data for some of the plots
   tsunami_subset <- dbGetQuery(jdbcConnection, "select * from (select country, count(country) as \"COUNT\" from tsunami_runup_data group by country) where \"COUNT\" > 100")
+  tsunami_subset_deaths <- dbGetQuery(jdbcConnection, "select * from tsunami_runup_data where deaths is not null and year > 1600 and deaths < 100000")
   dbDisconnect(jdbcConnection)
 }
 
@@ -53,3 +54,6 @@ ggplot(data = volcano_data, aes(x = VEI)) + geom_histogram(binwidth = 1) + xlab(
 
 ggplot(data = tsunami_subset, aes(x = COUNTRY, y = COUNT, fill = COUNTRY)) + geom_histogram(stat = "identity") + coord_flip() + xlab("Number of Tsunamis") + ggtitle("Nations With More Than 100 Tsunamis")
 
+# Facet-wrapped scatter plots of tsunami deaths by year
+
+ggplot(data = tsunami_subset_deaths, aes(x = YEAR, y = DEATHS_DESCR)) + geom_point() + facet_wrap(~COUNTRY) + xlab("Level of Deaths") + ggtitle("Tsunami Deaths by Country")
