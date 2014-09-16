@@ -51,5 +51,5 @@ ggplot(data = volcano_data, aes(x = VEI)) + geom_histogram(binwidth = 1) + xlab(
 
 # Histogram of countries where at least 100 tsunamis have hit
 
-ggplot(data = tsunami_subset, aes(x = COUNTRY, y = COUNT)) + geom_histogram(stat = "identity") + coord_flip() + xlab("Number of Tsunamis") + ggtitle("Nations With More Than 100 Tsunamis")
+ggplot(data = tsunami_subset, aes(x = COUNTRY, y = COUNT, fill = COUNTRY)) + geom_histogram(stat = "identity") + coord_flip() + xlab("Number of Tsunamis") + ggtitle("Nations With More Than 100 Tsunamis")
 
