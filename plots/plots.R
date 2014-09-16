@@ -25,7 +25,7 @@ if(!inherits(possibleError, "error")){
 
 # Correlation plot for seismic data
 
-GGally::ggpairs(seismic_data[,c(4,5,7)]) + ggtitle("Correlation Plots for Seismic Data")
+GGally::ggpairs(seismic_data[,c(4,5,7)], title = "Correlation Plots for Seismic Data")
 
 # Earthquake losses scatter plot, region vs. average annual loss
 
