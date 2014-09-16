@@ -56,4 +56,4 @@ ggplot(data = tsunami_subset, aes(x = COUNTRY, y = COUNT, fill = COUNTRY)) + geo
 
 # Facet-wrapped scatter plots of tsunami deaths by year
 
-ggplot(data = tsunami_subset_deaths, aes(x = YEAR, y = DEATHS_DESCR)) + geom_point() + facet_wrap(~COUNTRY) + xlab("Level of Deaths") + ggtitle("Tsunami Deaths by Country")
+ggplot(data = tsunami_subset_deaths, aes(x = YEAR, y = DEATHS_DESCR)) + geom_point() + facet_wrap(~COUNTRY) + ylab("Level of Deaths") + ggtitle("Tsunami Deaths by Country")
